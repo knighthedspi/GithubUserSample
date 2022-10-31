@@ -1,0 +1,40 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">@dimen/spacing_x2</dimen>
+    <dimen name="activity_vertical_margin">@dimen/spacing_x2</dimen>
+
+    <!-- for spacing -->
+    <dimen name="spacing_x0">0dp</dimen>
+    <dimen name="spacing_x0.25">2dp</dimen>
+    <dimen name="spacing_x0.5">4dp</dimen>
+    <dimen name="spacing_x0.75">6dp</dimen>
+    <dimen name="spacing_x1">8dp</dimen>
+    <dimen name="spacing_x1.25">10dp</dimen>
+    <dimen name="spacing_x1.5">12dp</dimen>
+    <dimen name="spacing_x2">16dp</dimen>
+    <dimen name="spacing_x2.5">20dp</dimen>
+    <dimen name="spacing_x3">24dp</dimen>
+    <dimen name="spacing_x4">32dp</dimen>
+    <dimen name="spacing_x4.5">36dp</dimen>
+    <dimen name="spacing_x5">40dp</dimen>
+    <dimen name="spacing_x6">48dp</dimen>
+    <dimen name="spacing_x6.5">52dp</dimen>
+    <dimen name="spacing_x7">56dp</dimen>
+    <dimen name="spacing_x7.5">60dp</dimen>
+    <dimen name="spacing_x8">64dp</dimen>
+    <dimen name="spacing_x8.5">68dp</dimen>
+    <dimen name="spacing_x9">72dp</dimen>
+    <dimen name="spacing_x10">80dp</dimen>
+    <dimen name="spacing_x11">88dp</dimen>
+    <dimen name="spacing_x12">96dp</dimen>
+
+    <!-- text size -->
+    <dimen name="text_size_tiny">10sp</dimen>
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_normal">14sp</dimen>
+    <dimen name="text_size_large">16sp</dimen>
+    <dimen name="text_size_great">22sp</dimen>
+    
+    <!--image size-->
+    <dimen name="image_size">160dp</dimen>
+</resources>

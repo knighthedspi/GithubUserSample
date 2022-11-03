@@ -16,7 +16,7 @@ data class UserInfo(
     @Json(name = "public_repos") val publicRepos: Int,
     @Json(name = "public_gists") val publicGists: Int,
     val followers: Int,
-    val following: String,
+    val following: Int,
     @Json(name = "created_at") val createdAt: String,
     @Json(name = "updated_at") val updatedAt: String
 )

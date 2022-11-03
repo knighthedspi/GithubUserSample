@@ -13,6 +13,7 @@ data class User(
     @Json(name = "followers_url") val followersUrl: String,
     @Json(name = "following_url") val followingUrl: String,
     @Json(name = "gists_url") val gistsUrl: String,
+    @Json(name = "starred_url") val starredUrl: String,
     @Json(name = "subscriptions_url") val subscriptionsUrl: String,
     @Json(name = "organizations_url") val organizationsUrl: String,
     @Json(name = "repos_url") val reposUrl: String,

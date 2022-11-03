@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "813def95a3927337c2473cbf5bdb219a",
+    "identityHash": "44f8db4ef6c48e677d6b24bd654ad88e",
     "entities": [
       {
         "tableName": "user",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`login` TEXT NOT NULL, `id` INTEGER NOT NULL, `nodeId` TEXT NOT NULL, `avatarUrl` TEXT NOT NULL, `gravatarId` TEXT, `url` TEXT NOT NULL, `htmlUrl` TEXT NOT NULL, `followersUrl` TEXT NOT NULL, `followingUrl` TEXT NOT NULL, `gistsUrl` TEXT NOT NULL, `subscriptionsUrl` TEXT NOT NULL, `organizationsUrl` TEXT NOT NULL, `reposUrl` TEXT NOT NULL, `eventsUrl` TEXT NOT NULL, `receivedEventsUrl` TEXT NOT NULL, `type` TEXT NOT NULL, `siteAdmin` INTEGER NOT NULL, PRIMARY KEY(`login`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`login` TEXT NOT NULL, `id` INTEGER NOT NULL, `nodeId` TEXT NOT NULL, `avatarUrl` TEXT NOT NULL, `gravatarId` TEXT, `url` TEXT NOT NULL, `htmlUrl` TEXT NOT NULL, `followersUrl` TEXT NOT NULL, `followingUrl` TEXT NOT NULL, `gistsUrl` TEXT NOT NULL, `starredUrl` TEXT NOT NULL, `subscriptionsUrl` TEXT NOT NULL, `organizationsUrl` TEXT NOT NULL, `reposUrl` TEXT NOT NULL, `eventsUrl` TEXT NOT NULL, `receivedEventsUrl` TEXT NOT NULL, `type` TEXT NOT NULL, `siteAdmin` INTEGER NOT NULL, PRIMARY KEY(`login`))",
         "fields": [
           {
             "fieldPath": "login",
@@ -65,6 +65,12 @@
           {
             "fieldPath": "gistsUrl",
             "columnName": "gistsUrl",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "starredUrl",
+            "columnName": "starredUrl",
             "affinity": "TEXT",
             "notNull": true
           },
@@ -156,7 +162,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '813def95a3927337c2473cbf5bdb219a')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '44f8db4ef6c48e677d6b24bd654ad88e')"
     ]
   }
 }

@@ -71,6 +71,7 @@ class GithubUserRemoteMediator(
                             user.followersUrl,
                             user.followingUrl,
                             user.gistsUrl,
+                            user.starredUrl,
                             user.subscriptionsUrl,
                             user.organizationsUrl,
                             user.reposUrl,

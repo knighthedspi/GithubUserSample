@@ -16,6 +16,7 @@ data class User(
     @ColumnInfo val followersUrl: String,
     @ColumnInfo val followingUrl: String,
     @ColumnInfo val gistsUrl: String,
+    @ColumnInfo val starredUrl: String,
     @ColumnInfo val subscriptionsUrl: String,
     @ColumnInfo val organizationsUrl: String,
     @ColumnInfo val reposUrl: String,

@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-parcelize'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -98,6 +99,10 @@ dependencies {
         debugImplementation it
     }
 
+    // navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
     // unit test
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
@@ -121,4 +126,5 @@ dependencies {
     androidTestUtil 'androidx.test:orchestrator:1.4.1'
     androidTestImplementation "io.mockk:mockk-android:$mockk_version"
     androidTestImplementation "io.mockk:mockk-agent-jvm:$mockk_version"
+    androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
 }

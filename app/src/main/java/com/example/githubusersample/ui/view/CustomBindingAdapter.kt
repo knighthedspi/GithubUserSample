@@ -5,7 +5,6 @@ import androidx.databinding.BindingAdapter
 import com.example.githubusersample.di.GlideApp
 
 object CustomBindingAdapter {
-
     @BindingAdapter("imageUrl")
     @JvmStatic
     fun loadImage(view: ImageView, url: String?) {
@@ -16,5 +15,4 @@ object CustomBindingAdapter {
             .load(url)
             .into(view)
     }
-
 }

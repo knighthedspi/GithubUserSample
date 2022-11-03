@@ -20,17 +20,17 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:padding="@dimen/spacing_x1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/avatar"
-            app:layout_constraintTop_toTopOf="parent"
-            android:padding="@dimen/spacing_x1">
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/name"
+                android:text="@string/login_id"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,64 +39,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/spacing_x1"
-                android:text="@{user.name}"
+                android:text="@{user.login}"
                 app:layout_constraintStart_toEndOf="@id/login"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="タイン・フイ" />
+                tools:text="knighthedspi" />
 
             <TextView
-                android:id="@+id/email"
+                android:id="@+id/type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/email"
+                android:text="@string/type"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/name" />
 
             <TextView
-                android:id="@+id/emailInfo"
+                android:id="@+id/typeInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_x1"
-                android:text="@{user.email}"
-                app:layout_constraintStart_toEndOf="@id/email"
+                android:text="@{user.type}"
+                app:layout_constraintStart_toEndOf="@id/login"
                 app:layout_constraintTop_toBottomOf="@id/name"
-                tools:text="knighthedspi@gmail.com" />
-
-            <TextView
-                android:id="@+id/followers"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/followers"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/email" />
-
-            <TextView
-                android:id="@+id/followersInfo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_x1"
-                android:text="@{user.followers}"
-                app:layout_constraintStart_toEndOf="@id/followers"
-                app:layout_constraintTop_toBottomOf="@id/email"
-                tools:text="6" />
-
-            <TextView
-                android:id="@+id/following"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/following"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/followers" />
-
-            <TextView
-                android:id="@+id/followingInfo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_x1"
-                android:text="@{user.following}"
-                app:layout_constraintStart_toEndOf="@id/following"
-                app:layout_constraintTop_toBottomOf="@id/followers"
-                tools:text="16" />
+                tools:text="User" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -104,8 +67,11 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="user"
-            type="com.example.githubusersample.data.api.model.UserInfo" />
+            type="com.example.githubusersample.data.db.entity.User" />
     </data>
+
 </layout>

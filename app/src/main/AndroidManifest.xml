@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.githubusersample">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".app.GithubUserApplication"
         android:allowBackup="true"
@@ -13,6 +15,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GithubUserSapmple"
-        tools:targetApi="31" />
+        tools:targetApi="31">
+
+        <activity android:name=".ui.activity.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+    </application>
 
 </manifest>

@@ -6,6 +6,11 @@
     <string name="type">Type:</string>
     <string name="name">Name:</string>
     <string name="email">Email:</string>
+    <string name="company">Company:</string>
+    <string name="location">Location:</string>
+    <string name="public_repos">Public Repos:</string>
+    <string name="public_gists">Public Gists:</string>
     <string name="followers">Followers:</string>
     <string name="following">Following:</string>
+    <string name="retry">Retry</string>
 </resources>

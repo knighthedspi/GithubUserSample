@@ -1,10 +1,18 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
     compileSdk 32
+
+    buildFeatures {
+        dataBinding true
+    }
 
     defaultConfig {
         applicationId "com.example.githubusersapmple"
@@ -13,12 +21,37 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.example.githubusersample.TestRunner"
+        testInstrumentationRunnerArguments clearPackageData: 'true'
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += ['room.schemaLocation': "$projectDir/schemas".toString()]
+            }
+        }
+
+        testOptions {
+            execution 'ANDROIDX_TEST_ORCHESTRATOR'
+        }
+    }
+
+    signingConfigs {
+        release {
+            if (file('../keystore/release_signing.properties').exists()) {
+                Properties properties = new Properties()
+                file('../keystore/release_signing.properties').withReader { properties.load(it) }
+                keyAlias properties.keyAlias
+                keyPassword properties.keyPassword
+                storeFile file(properties.storeFile)
+                storePassword properties.storePassword
+            }
+        }
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -28,15 +61,109 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+        freeCompilerArgs += ["-Xopt-in=kotlin.RequiresOptIn"]
+    }
+
+    // setup bundle
+    bundle {
+        language {
+            enableSplit = true
+        }
+        density {
+            enableSplit = true
+        }
+        abi {
+            enableSplit = true
+        }
+    }
+
+    // fix duplicate mockk class issue for android test APK
+    configurations {
+        androidTestImplementation {
+            exclude group: 'io.mockk', module: 'mockk-agent-jvm'
+        }
     }
 }
 
 dependencies {
-
-    implementation 'androidx.core:core-ktx:1.9.0'
+    // Android X
+    implementation "androidx.core:core-ktx:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation "androidx.fragment:fragment-ktx:1.5.4"
+
+    // coroutines
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
+
+    // material
+    implementation 'com.google.android.material:material:1.7.0'
+
+    // hilts
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
+    kapt 'androidx.hilt:hilt-compiler:1.0.0'
+
+    // lifecycle
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+
+    // database
+    implementation "androidx.room:room-ktx:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-paging:$room_version"
+    implementation "androidx.paging:paging-runtime-ktx:$paging_version"
+
+    // API request
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
+    implementation "com.squareup.moshi:moshi-kotlin:$moshi_version"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshi_version"
+    implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.6'
+
+    // log
+    implementation 'com.jakewharton.timber:timber:5.0.1'
+
+    // image loader
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    kapt "com.github.bumptech.glide:compiler:$glide_version"
+
+    // Inspector
+    ["com.facebook.stetho:stetho:$stetho_version",
+     "com.facebook.stetho:stetho-okhttp3:$stetho_version",
+     "com.facebook.stetho:stetho-timber:$stetho_version"].forEach {
+        debugImplementation it
+    }
+
+    // navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    // unit test
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    testImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
+    kaptTest "com.google.dagger:hilt-compiler:$hilt_version"
+    testImplementation "org.mockito:mockito-core:$mockito_version"
+
+    // instrumentation test
+    androidTestImplementation 'androidx.arch.core:core-testing:2.1.0'
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
+    androidTestImplementation  "com.google.dagger:hilt-android-testing:$hilt_version"
+    androidTestImplementation 'androidx.test:core:1.4.0'
+    androidTestImplementation 'androidx.test:runner:1.4.0'
+    androidTestImplementation 'androidx.test:rules:1.4.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test:core-ktx:1.4.0'
+    kaptAndroidTest "com.google.dagger:hilt-compiler:$hilt_version"
+    androidTestImplementation "org.mockito:mockito-core:$mockito_version"
+    androidTestImplementation "org.mockito:mockito-android:$mockito_version"
+    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutine_version"
+    androidTestUtil 'androidx.test:orchestrator:1.4.1'
+    androidTestImplementation "io.mockk:mockk-android:$mockk_version"
+    androidTestImplementation "io.mockk:mockk-agent-jvm:$mockk_version"
+    androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
 }

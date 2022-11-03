@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="user"
+            type="com.example.githubusersample.data.api.model.UserInfo" />
+        <variable
+            name="isLoading"
+            type="boolean" />
+        <variable
+            name="isError"
+            type="boolean" />
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/spacing_x1">
+
+        <ImageView
+            android:id="@+id/avatar"
+            android:layout_width="@dimen/image_size"
+            android:layout_height="@dimen/image_size"
+            android:visibility="@{isLoading || isError ? View.GONE : View.VISIBLE}"
+            app:imageUrl="@{user.avatarUrl}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="@{isLoading || isError ? View.GONE : View.VISIBLE}"
+            android:layout_marginTop="@dimen/spacing_x1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/avatar"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:padding="@dimen/spacing_x1">
+
+            <TextView
+                android:id="@+id/login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_x1"
+                android:text="@{user.name}"
+                app:layout_constraintStart_toEndOf="@id/login"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="タイン・フイ" />
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/email"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/name" />
+
+            <TextView
+                android:id="@+id/emailInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_x1"
+                android:text="@{user.email}"
+                app:layout_constraintStart_toEndOf="@id/email"
+                app:layout_constraintTop_toBottomOf="@id/name"
+                tools:text="knighthedspi@gmail.com" />
+
+            <TextView
+                android:id="@+id/company"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/company"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/email" />
+
+            <TextView
+                android:id="@+id/companyInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_x1"
+                android:text="@{user.company}"
+                app:layout_constraintStart_toEndOf="@id/company"
+                app:layout_constraintTop_toBottomOf="@id/email"
+                tools:text="Freelancer" />
+
+            <TextView
+                android:id="@+id/location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/location"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/company" />
+
+            <TextView
+                android:id="@+id/locationInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_x1"
+                android:text="@{user.location}"
+                app:layout_constraintStart_toEndOf="@id/location"
+                app:layout_constraintTop_toBottomOf="@id/companyInfo"
+                tools:text="Tokyo, Japan" />
+
+            <TextView
+                android:id="@+id/publicRepos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/public_repos"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/location" />
+
+            <TextView
+                android:id="@+id/publicReposInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_x1"
+                android:text="@{String.valueOf(user.publicRepos)}"
+                app:layout_constraintStart_toEndOf="@id/publicRepos"
+                app:layout_constraintTop_toBottomOf="@id/locationInfo"
+                tools:text="20" />
+
+            <TextView
+                android:id="@+id/publicGists"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/public_gists"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/publicRepos" />
+
+            <TextView
+                android:id="@+id/publicGistsInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_x1"
+                android:text="@{String.valueOf(user.publicGists)}"
+                app:layout_constraintStart_toEndOf="@id/publicGists"
+                app:layout_constraintTop_toBottomOf="@id/publicRepos"
+                tools:text="3" />
+
+            <TextView
+                android:id="@+id/followers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/followers"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/publicGists" />
+
+            <TextView
+                android:id="@+id/followersInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_x1"
+                android:text="@{String.valueOf(user.followers)}"
+                app:layout_constraintStart_toEndOf="@id/followers"
+                app:layout_constraintTop_toBottomOf="@id/publicGists"
+                tools:text="6" />
+
+            <TextView
+                android:id="@+id/following"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/following"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/followers" />
+
+            <TextView
+                android:id="@+id/followingInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_x1"
+                android:text="@{String.valueOf(user.following)}"
+                app:layout_constraintStart_toEndOf="@id/following"
+                app:layout_constraintTop_toBottomOf="@id/followers"
+                tools:text="16" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="@{isLoading ? View.VISIBLE : View.GONE}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <Button
+            android:id="@+id/retry_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/retry"
+            android:visibility="@{isError ? View.VISIBLE : View.GONE}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

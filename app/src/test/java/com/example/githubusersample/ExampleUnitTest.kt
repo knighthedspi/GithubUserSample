@@ -1,4 +1,4 @@
-package com.example.githubusersapmple
+package com.example.githubusersample
 
 import org.junit.Test
 

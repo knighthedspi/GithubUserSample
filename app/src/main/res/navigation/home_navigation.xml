@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home"
+    app:startDestination="@id/users_fragment">
+    <fragment
+        android:id="@+id/users_fragment"
+        android:name="com.example.githubusersample.ui.fragment.UsersFragment"
+        tools:layout="@layout/fragment_users" >
+        <action
+            android:id="@+id/next_action"
+            app:destination="@id/user_info_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right">
+            <argument
+                android:name="url"
+                app:argType="string" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/user_info_fragment"
+        android:name="com.example.githubusersample.ui.fragment.UserInfoFragment"
+        tools:layout="@layout/fragment_user_info">
+        <argument
+            android:name="url"
+            app:argType="string" />
+    </fragment>
+</navigation>

@@ -1,3 +1,16 @@
 <resources>
-    <string name="app_name">GithubUserSapmple</string>
+    <string name="app_name">GithubUserSample</string>
+    <string name="loading">Loading</string>
+    <string name="no_info">No info</string>
+    <string name="login_id">Login ID:</string>
+    <string name="type">Type:</string>
+    <string name="name">Name:</string>
+    <string name="email">Email:</string>
+    <string name="company">Company:</string>
+    <string name="location">Location:</string>
+    <string name="public_repos">Public Repos:</string>
+    <string name="public_gists">Public Gists:</string>
+    <string name="followers">Followers:</string>
+    <string name="following">Following:</string>
+    <string name="retry">Retry</string>
 </resources>

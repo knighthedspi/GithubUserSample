@@ -30,9 +30,23 @@ android {
         }
     }
 
+    signingConfigs {
+        release {
+            if (file('../keystore/release_signing.properties').exists()) {
+                Properties properties = new Properties()
+                file('../keystore/release_signing.properties').withReader { properties.load(it) }
+                keyAlias properties.keyAlias
+                keyPassword properties.keyPassword
+                storeFile file(properties.storeFile)
+                storePassword properties.storePassword
+            }
+        }
+    }
+
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -43,6 +57,26 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
         freeCompilerArgs += ["-Xopt-in=kotlin.RequiresOptIn"]
+    }
+
+    // setup bundle
+    bundle {
+        language {
+            enableSplit = true
+        }
+        density {
+            enableSplit = true
+        }
+        abi {
+            enableSplit = true
+        }
+    }
+
+    // fix duplicate mockk class issue for android test APK
+    configurations {
+        androidTestImplementation {
+            exclude group: 'io.mockk', module: 'mockk-agent-jvm'
+        }
     }
 }
 

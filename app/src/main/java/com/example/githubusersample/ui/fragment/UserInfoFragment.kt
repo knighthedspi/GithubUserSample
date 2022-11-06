@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
 import com.example.githubusersample.R
@@ -46,6 +48,12 @@ class UserInfoFragment : Fragment() {
     }
 
     private fun setupBinding() {
+        (activity as AppCompatActivity).supportActionBar?.apply {
+            setTitle(R.string.user_info_title)
+            setHomeButtonEnabled(true)
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
+        }
         binding.retryButton.setOnClickListener {
             init()
         }

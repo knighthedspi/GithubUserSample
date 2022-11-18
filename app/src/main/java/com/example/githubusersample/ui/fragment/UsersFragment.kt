@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -50,6 +51,12 @@ class UsersFragment : Fragment() {
     }
 
     private fun setupBinding() {
+        (activity as AppCompatActivity).supportActionBar?.apply {
+            setTitle(R.string.users_title)
+            setHomeButtonEnabled(false)
+            setDisplayHomeAsUpEnabled(false)
+            setDisplayShowHomeEnabled(false)
+        }
         adapter = UserAdapter(requireContext()) {
             val action = UsersFragmentDirections.nextAction(it.url)
             findNavController().navigate(action)

@@ -13,4 +13,6 @@
     <string name="followers">Followers:</string>
     <string name="following">Following:</string>
     <string name="retry">Retry</string>
+    <string name="users_title">List of user</string>
+    <string name="user_info_title">User info</string>
 </resources>

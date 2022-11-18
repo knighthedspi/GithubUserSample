@@ -3,67 +3,75 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/spacing_x1">
-
-        <ImageView
-            android:id="@+id/avatar"
-            android:layout_width="@dimen/image_size"
-            android:layout_height="@dimen/image_size"
-            app:imageUrl="@{user.avatarUrl}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ContentDescription" />
+        app:cardUseCompatPadding="true"
+        app:cardCornerRadius="@dimen/spacing_x1">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/spacing_x1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/avatar"
-            app:layout_constraintTop_toTopOf="parent">
+            android:padding="@dimen/spacing_x1">
 
-            <TextView
-                android:id="@+id/login"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/login_id"
+            <ImageView
+                android:id="@+id/avatar"
+                android:layout_width="@dimen/image_size"
+                android:layout_height="@dimen/image_size"
+                app:imageUrl="@{user.avatarUrl}"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_x1"
-                android:text="@{user.login}"
-                app:layout_constraintStart_toEndOf="@id/login"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="knighthedspi" />
+                tools:ignore="ContentDescription" />
 
-            <TextView
-                android:id="@+id/type"
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/type"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/name" />
+                android:padding="@dimen/spacing_x1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/avatar"
+                app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/typeInfo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{user.type}"
-                app:layout_constraintStart_toEndOf="@id/login"
-                app:layout_constraintTop_toBottomOf="@id/name"
-                tools:text="User" />
+                <TextView
+                    android:id="@+id/login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/login_id"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_x1"
+                    android:text="@{user.login}"
+                    app:layout_constraintStart_toEndOf="@id/login"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="knighthedspi" />
+
+                <TextView
+                    android:id="@+id/type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/type"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/name" />
+
+                <TextView
+                    android:id="@+id/typeInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{user.type}"
+                    app:layout_constraintStart_toEndOf="@id/login"
+                    app:layout_constraintTop_toBottomOf="@id/name"
+                    tools:text="User" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
 
     <data>
 

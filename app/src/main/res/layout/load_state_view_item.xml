@@ -20,6 +20,8 @@
             android:id="@+id/retry_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/Widget.Material3.Button"
+            android:textSize="@dimen/text_size_large"
             android:text="@string/retry"
             android:visibility="@{loadState instanceof LoadState.Error ? View.VISIBLE : View.GONE}"
             app:layout_constraintTop_toTopOf="parent"
